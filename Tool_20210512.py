@@ -2,8 +2,8 @@
 @project: 各种提高效率的函数或类
 @autor：郑煜钒
 @file：Tool.py
-@time：2021-05-11
-@vision：1.5
+@time：2021-05-12
+@vision：1.6
 """
 
 import pandas as pd
@@ -1071,8 +1071,7 @@ class model:
         reg_lambda = [0,0.5,1]
         reg_alpha = [0,0.5,1]
         gamma = [0, 1, 5]
-        n_estimator = [10,50,75,100,150,200,250,300,400,500,600,700]
-        all_nb = len(booster)*len(eta)*len(max_depth)*len(subsample)*len(colsample_bytree)*len(reg_lambda)*len(reg_alpha)*len(gamma)*len(n_estimator)
+        all_nb = len(booster)*len(eta)*len(max_depth)*len(subsample)*len(colsample_bytree)*len(reg_lambda)*len(reg_alpha)*len(gamma)
         num=1
         # 用于重启训练模型，提高效率，不重复跑相同的实验
         if(os.path.exists(path_a)):
@@ -1084,7 +1083,7 @@ class model:
         else:
             nums = 0
             col_a = ['num','mse','rmse','mae','r2','mad','mape','r2_adjusted','rmsle']
-            col_p = ['num','booster','eta','max_depth','subsample','colsample_bytree','reg_lambda','reg_alpha','gamma','n_estimator']
+            col_p = ['num','booster','eta','max_depth','subsample','colsample_bytree','reg_lambda','reg_alpha','gamma']
             self.write_csv_result(path_a,path_p,col_a,col_p)
         # 用于保存最好的模型
         if(os.path.exists(path_b)):
@@ -1107,30 +1106,29 @@ class model:
                             for rl in reg_lambda:
                                 for ra in reg_alpha:
                                     for g in gamma:
-                                        for n in n_estimator:
-                                            if(nums>=num):
-                                                num = num+1
-                                            else:
-                                                print("XGB train...{}/{}".format(num,all_nb))
-                                                model = xgb.XGBRegressor(gamma=g, reg_alpha=ra, reg_lambda=rl, subsample=s, colsample_bytree=cb,
-                                                                         max_depth=md, eta=e, booster=b)
-                                                model.fit(self.train_x,self.train_y)
-                                                pred_test = model.predict(self.test_x)
-                                                pred_test = pred_test.reshape(-1,1)
-                                                mse,rmse,mae,r2,mad,mape,r2_adjusted,rmsle = self.calculate(self.test_y,pred_test,self.test_sample_size,self.feature_size)
-                                                all_m = [num,mse,rmse,mae,r2,mad,mape,r2_adjusted,rmsle]
-                                                all_p = [num,ma,s,l,g,rl,ra,c,n]
-                                                self.write_csv_result(path_a,path_p,all_m,all_p)
-                                                if(rmse < best_result):
-                                                    joblib.dump(model,model_path)
-                                                    with open(path_b,"a",encoding="utf-8",newline="")as f:
-                                                        f = csv.writer(f)
-                                                        f.writerow([num,mse,rmse,mae,r2,mad,mape,r2_adjusted,rmsle])
-                                                    best_result = rmse
-                                                    print("current best result, mse:{},mae:{},rmse:{},mad:{},r2:{},mape:{},r2 adjusted:{},rmsle:{}".format(mse,mad,rmse,mad,r2,mape,r2_adjusted,rmsle))
-                                                print("end....",num)
-                                                num = num+1
-                                                print("--------------------------------")
+                                        if(nums>=num):
+                                            num = num+1
+                                        else:
+                                            print("XGB train...{}/{}".format(num,all_nb))
+                                            model = xgb.XGBRegressor(gamma=g, reg_alpha=ra, reg_lambda=rl, subsample=s, colsample_bytree=cb,
+                                                                        max_depth=md, eta=e, booster=b)
+                                            model.fit(self.train_x,self.train_y)
+                                            pred_test = model.predict(self.test_x)
+                                            pred_test = pred_test.reshape(-1,1)
+                                            mse,rmse,mae,r2,mad,mape,r2_adjusted,rmsle = self.calculate(self.test_y,pred_test,self.test_sample_size,self.feature_size)
+                                            all_m = [num,mse,rmse,mae,r2,mad,mape,r2_adjusted,rmsle]
+                                            all_p = [num,b,e,md,s,cb,rl,ra,g]
+                                            self.write_csv_result(path_a,path_p,all_m,all_p)
+                                            if(rmse < best_result):
+                                                joblib.dump(model,model_path)
+                                                with open(path_b,"a",encoding="utf-8",newline="")as f:
+                                                    f = csv.writer(f)
+                                                    f.writerow([num,mse,rmse,mae,r2,mad,mape,r2_adjusted,rmsle])
+                                                best_result = rmse
+                                                print("current best result, mse:{},mae:{},rmse:{},mad:{},r2:{},mape:{},r2 adjusted:{},rmsle:{}".format(mse,mad,rmse,mad,r2,mape,r2_adjusted,rmsle))
+                                            print("end....",num)
+                                            num = num+1
+                                            print("--------------------------------")
 
     # Catboost调参训练代码
     def Cat(self,name):
@@ -1140,7 +1138,7 @@ class model:
         model_path = self.path_best_model + "Cat_" + name + "_" + "best.m"
         # 人工设置网格搜索的范围
         depth=[5,6,7,8,9,10]
-        learning_rate=[0.001,0.01,0.03,0.05,0.07,0.09,0.1,0.2,0.3]
+        learning_rate=[0.001,0.01,0.03,0.05,0.07,0.09,0.1]
         iterations = [1500,1400,1300,1200,1100,1000,900,800]
         l2_leaf_reg = [0,1,2,3,4,5]
         all_nb = len(depth)*len(learning_rate)*len(iterations)*len(l2_leaf_reg)
@@ -1178,28 +1176,25 @@ class model:
                             num = num+1
                         else:
                             print("CAT train...{}/{}".format(num,all_nb))
-                            try:
-                                model = cb.CatBoostRegressor(depth=d,learning_rate=l,iterations=i,l2_leaf_reg=l2,logging_level='Silent')
-                                model.fit(self.train_x,self.train_y)
-                                pred_test = model.predict(self.test_x)
-                                pred_test = pred_test.reshape(-1,1)
-                                mse,rmse,mae,r2,mad,mape,r2_adjusted,rmsle = self.calculate(self.test_y,pred_test,self.test_sample_size,self.feature_size)
-                                all_m = [num,mse,rmse,mae,r2,mad,mape,r2_adjusted,rmsle]
-                                all_p = [num,d,l,i,l2]
-                                self.write_csv_result(path_a,path_p,all_m,all_p)
-                                if(rmse < best_result):
-                                    joblib.dump(model,model_path)
-                                    with open(path_b,"a",encoding="utf-8",newline="")as f:
-                                        f = csv.writer(f)
-                                        f.writerow([num,mse,rmse,mae,r2,mad,mape,r2_adjusted,rmsle])
-                                    best_result = rmse
-                                    print("current best result, mse:{},mae:{},rmse:{},mad:{},r2:{},mape:{},r2 adjusted:{},rmsle:{}".format(mse,mad,rmse,mad,r2,mape,r2_adjusted,rmsle))
-                                print("end....",num)
-                                num = num+1
-                                print("--------------------------------")   
-                            except:
-                                num = num+1
-                                print("error")
+                            model = cb.CatBoostRegressor(depth=d,learning_rate=l,iterations=i,l2_leaf_reg=l2,logging_level='Silent')
+                            model.fit(self.train_x,self.train_y)
+                            pred_test = model.predict(self.test_x)
+                            pred_test = pred_test.reshape(-1,1)
+                            mse,rmse,mae,r2,mad,mape,r2_adjusted,rmsle = self.calculate(self.test_y,pred_test,self.test_sample_size,self.feature_size)
+                            all_m = [num,mse,rmse,mae,r2,mad,mape,r2_adjusted,rmsle]
+                            all_p = [num,d,l,i,l2]
+                            self.write_csv_result(path_a,path_p,all_m,all_p)
+                            if(rmse < best_result):
+                                joblib.dump(model,model_path)
+                                with open(path_b,"a",encoding="utf-8",newline="")as f:
+                                    f = csv.writer(f)
+                                    f.writerow([num,mse,rmse,mae,r2,mad,mape,r2_adjusted,rmsle])
+                                best_result = rmse
+                                print("current best result, mse:{},mae:{},rmse:{},mad:{},r2:{},mape:{},r2 adjusted:{},rmsle:{}".format(mse,mad,rmse,mad,r2,mape,r2_adjusted,rmsle))
+                            print("end....",num)
+                            num = num+1
+                            print("--------------------------------")   
+
 
     # Lgboost训练调参代码
     def Lgb(self,name):
@@ -1214,7 +1209,7 @@ class model:
         subsample = [1.0,0.8,0.6]
         max_depth = [-1]
         random_state = 17
-        subsample_freq = [0,0.2,0.4]
+        subsample_freq = [0,1,2,3]
         colsample_bytree = [1,0.8,0.6]
         reg_alpha = [0,1,2]
         reg_lambda = [0,1,2]
