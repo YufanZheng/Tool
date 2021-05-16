@@ -1,9 +1,14 @@
 # Tool：提高实验效率的工具包（测试版）
+Tool Kit for Improving Experimental Efficiency (Beta)
 
 ### Sample：
-train_sample.py：调用训练的示例代码；
-data.csv：示例代码所使用的数据集；
-注：train_sample.py 调用的是最新版本的包；
+
+train_sample.py：调用训练的示例代码（Sample code to invoke the training）；
+
+data.csv：示例代码所使用的数据集（The data set used by the sample code）；
+
+注：train_sample.py 调用的是最新版本的包（The call is the latest version of the package）；
+
 
 ### 更正日志：
 
@@ -25,7 +30,8 @@ data.csv：示例代码所使用的数据集；
 
 2021-05-17 00:23 --- 对评估函数的初始化进行了修正；
 
-## 欢迎大家使用和指正！！    Email：zhjpre@gmail.com
+## 欢迎大家使用和指正！！！ （Welcome to use and correct！！！）   
+## Email：zhjpre@gmail.com
 
 
 
