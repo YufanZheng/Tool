@@ -1,4 +1,4 @@
-# Tool：提高实验效率的工具包
+# Tool：提高实验效率的工具包（测试版）
 
 ### Sample：
 train_sample.py：调用训练的示例代码；
