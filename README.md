@@ -1,6 +1,11 @@
 # Tool：提高实验效率的工具包（测试版）
 Tool Kit for Improving Experimental Efficiency (Beta)
 
+
+## 欢迎大家使用和指正！！！ （Welcome to use and correct！！！）   
+## Email：zhjpre@gmail.com
+
+
 ### Sample：
 
 train_sample.py：调用训练的示例代码（Sample code to invoke the training）；
@@ -30,8 +35,6 @@ data.csv：示例代码所使用的数据集（The data set used by the sample c
 
 2021-05-17 00:23 --- 对评估函数的初始化进行了修正；
 
-## 欢迎大家使用和指正！！！ （Welcome to use and correct！！！）   
-## Email：zhjpre@gmail.com
 
 
 
