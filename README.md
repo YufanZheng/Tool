@@ -35,10 +35,13 @@ data.csv：示例代码所使用的数据集（The data set used by the sample c
 
 
 
-### 函数功能简介
+### 函数或类的功能简介（A brief description of the function or class）
 
-| Function      | Description | Other     |
+| Name      | Description | Type     |
 | :----:        |    :----:   |    :----:   |
-| Header      | Title       | Here's this   |
-| Paragraph   | Text        | And more      |
+| file_name      |  查找指定文件夹名下的所有文件的名称  |  function  |
+| mkdir   |  创建文件夹 | function  |
+| create_time_seq   |  创建时间序列数据集  |  function  |
+| BLSregressor   |  封装好的 Bord Learning System 的模型类  | Class  |
+| model   |  训练传统机器学习和集成学习模型的类  |  Class |
 
