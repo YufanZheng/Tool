@@ -26,3 +26,13 @@ data.csv：示例代码所使用的数据集；
 2021-05-17 00:23 --- 对评估函数的初始化进行了修正；
 
 ## 欢迎大家使用和指正！！
+
+
+
+### 函数功能简介
+
+| Function      | Description | Other     |
+| :----:        |    :----:   |    :----:   |
+| Header      | Title       | Here's this   |
+| Paragraph   | Text        | And more      |
+
