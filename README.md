@@ -24,6 +24,7 @@ data.csv：示例代码所使用的数据集（The data set used by the sample c
 | create_time_seq   |  创建时间序列数据集  |  function  |     |
 | BLSregressor   |  封装好的 Bord Learning System 的模型类  | class  |     |
 | model   |  训练传统机器学习和集成学习模型的类  |  class |   各个模型的网格搜索范围要根据具体任务具体设置   |
+| analysis   |  数据分析的类  |  class |      |
 
 
 ### 更正日志：
@@ -44,7 +45,7 @@ data.csv：示例代码所使用的数据集（The data set used by the sample c
 
 2021-05-14 15:22 --- 加入了使用最小二乘法去优化的线性回归模型，最基本的线性回归模型；
 
-2021-05-17 00:23 --- 对评估函数的初始化进行了修正；
+2021-05-17 12:34 --- 对评估函数的初始化进行了修正，加入了一个初步的数据分析类analysis；
 
 
 
