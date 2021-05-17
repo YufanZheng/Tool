@@ -22,8 +22,8 @@ data.csv：示例代码所使用的数据集（The data set used by the sample c
 | file_name      |  查找指定文件夹名下的所有文件的名称  |  function  |
 | mkdir   |  创建文件夹 | function  |
 | create_time_seq   |  创建时间序列数据集  |  function  |
-| BLSregressor   |  封装好的 Bord Learning System 的模型类  | Class  |
-| model   |  训练传统机器学习和集成学习模型的类  |  Class |
+| BLSregressor   |  封装好的 Bord Learning System 的模型类  | class  |
+| model   |  训练传统机器学习和集成学习模型的类  |  class |
 
 
 ### 更正日志：
