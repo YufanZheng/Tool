@@ -52,6 +52,8 @@ data.csv：示例代码所使用的数据集（The data set used by the sample c
 
 2021-06-21 19:09 --- 加入了BLS的分类、聚类算法的内部评估指标函数、7z压缩函数，model类训练后对应寻找最优参数的函数；
 
+2021-08-10 13:29 --- 对KNN、RF、EXT、Ada、GBDT、LGB、XGB、CAT和LinearSVR的参数范围（缩小到默认参数上下波动）进行调整；
+
 
 
 
