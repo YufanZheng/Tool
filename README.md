@@ -5,6 +5,9 @@ Tool Kit for Improving Experimental Efficiency (Beta)
 ## 欢迎大家使用和指正！！！ （Welcome to use and correct！！！）   
 ## Email：zhjpre@gmail.com
 
+## 此工具只用于提高工作效率，请在调用工具包的同时，注重个人理论知识的积累，切勿成为一个调包侠！！！
+
+## 每个模型的参数范围需自行针对每个任务进行合理的设定。
 
 ### Sample：
 
