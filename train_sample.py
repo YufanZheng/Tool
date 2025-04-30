@@ -27,7 +27,7 @@ print("Shape of test y : {}".format(test_y.shape))
 
 # 2）调参训练模型
 
-from Tool_20210514 import model
+from MLtool import model
 
 m = model(path_model_csv="./results/",path_model_pic="./pic/",path_best_model="./models/")
 model_name = "Lr"
