@@ -1,3 +1,5 @@
+
+
 # Tool：提高实验效率的时序预测工具包（测试版）  
 Tool Kit for Improving Experimental Efficiency (Beta)
 
@@ -33,7 +35,7 @@ data.csv：示例代码所使用的数据集（The data set used by the sample c
 | model   |  训练传统机器学习和集成学习模型的类 (Class for training traditional machine learning and ensemble learning models)  |  class（类） |   各个模型的网格搜索范围要根据具体任务具体设置（The grid search range of each model should be set according to the specific task）   |
 | analysis   |  数据分析的类 (Class for data analysis)  |  class（类） |      |
 | calculate_cluster   |  评估聚类算法的内部评估指标 (Evaluate internal metrics for clustering algorithms)  |  function（函数） |      |
-| analysiz_train_results  |  model类对应寻找最优结果的工具 (Tool for finding the optimal result corresponding to the model class)  |  function（函数） |      |
+| analyze_train_results  |  model类对应寻找最优结果的工具 (Tool for finding the optimal result corresponding to the model class)  |  function（函数） |      |
 
 
 ### 更正日志（Correction Log）：
@@ -51,4 +53,4 @@ data.csv：示例代码所使用的数据集（The data set used by the sample c
 2021-08-10 13:29 --- 对KNN、RF、EXT、Ada、GBDT、LGB、XGB、CAT和LinearSVR的参数范围（缩小到默认参数上下波动）进行调整；  
 2021-08-12 14:18 --- 修复LR模型训练函数中的写入错误；  
 2021-09-20 15:21 --- 修复参数设置错误导致出现报错的情况；  
-2021-12-14 19:17 --- 修改了Logistics的参数；增加了15个新的回归问题的评估指标；  
+2021-12-14 19:17 --- 修改了Logistics的参数；增加了15个新的回归问题的评估指标；
